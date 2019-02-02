@@ -6,7 +6,7 @@ import { render, waitForElement } from "react-testing-library";
 describe("AppBar component", () => {
   it("should be render correctly", () => {
     const div = document.createElement("div");
-    ReactDOM.render(<AppBar />, div);
+    ReactDOM.render(<AppBar title={"render"} />, div);
     ReactDOM.unmountComponentAtNode(div);
   });
 
