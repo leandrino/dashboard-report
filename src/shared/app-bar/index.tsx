@@ -1,11 +1,13 @@
-import React from "react";
 import styled from "@emotion/styled";
-import { Header } from "./app-bar.style";
 
-interface IAppBar {
-  title: string;
-}
-
-const AppBar = (props: IAppBar) => <Header>{props.title}</Header>;
+const AppBar = styled.header`
+  align-items: center;
+  background-color: #16233a;
+  color: #f5f5f5;
+  display: flex;
+  height: 35px;
+  padding: 0 15px;
+  width: 100%;
+`;
 
 export default AppBar;
