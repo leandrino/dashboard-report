@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import { QueryRenderer } from "react-relay";
 const graphql = require("babel-plugin-relay/macro");
 import { Global, css } from "@emotion/core";
-import { VictoryBar, VictoryChart, VictoryAxis, VictoryTheme } from "victory";
+import { VictoryLine, VictoryChart, VictoryAxis, VictoryTheme } from "victory";
 import { globalCSS } from "./app.style";
 import AppBar from "./shared/app-bar";
-
-const environment = require("./relay/environment");
+import * as moment from "moment";
+import environment from "./relay/environment";
 
 const data = [
   { quarter: 1, earnings: 13000 },
@@ -19,16 +19,20 @@ class App extends Component {
   public render() {
     return (
       <>
+        <Global styles={globalCSS} />
+        <AppBar>Any render</AppBar>
         <QueryRenderer
           environment={environment}
           query={graphql`
-            query ChartQuery {
-              name_project
-              axisNameX
-              axisNameY
-              axis {
-                x
-                y
+            query appChartQuery {
+              chart {
+                name_project
+                axisNameX
+                axisNameY
+                axis {
+                  x
+                  y
+                }
               }
             }
           `}
@@ -37,25 +41,29 @@ class App extends Component {
             if (error) {
               return <div>Error!</div>;
             }
-            if (!error) {
-              return <div>Loading</div>;
+            if (!props) {
+              return <div> loading ... </div>;
             }
-            return <div>{props}</div>;
+            const dataChart = props.chart.axis.map((item: any) => {
+              return {
+                x: item.x,
+                y: parseFloat(item.y)
+              };
+            });
+            return (
+              <VictoryChart
+                width={600}
+                height={470}
+                theme={VictoryTheme.material}
+                domainPadding={20}
+              >
+                <VictoryAxis tickFormat={x => x} />
+                <VictoryAxis dependentAxis={true} tickFormat={y => y} />
+                <VictoryLine data={dataChart} x="x" y="y" />
+              </VictoryChart>
+            );
           }}
         />
-        <Global styles={globalCSS} />
-        <AppBar>Any render</AppBar>
-        <VictoryChart theme={VictoryTheme.material} domainPadding={20}>
-          <VictoryAxis
-            tickValues={[1, 2, 3, 4]}
-            tickFormat={["Quater 1", "Quarter 2", "Quarter 3", "Quarter 4"]}
-          />
-          <VictoryAxis
-            dependentAxis={true}
-            tickFormat={x => `R$${x / 1000}k`}
-          />
-          <VictoryBar data={data} x="quarter" y="earnings" />
-        </VictoryChart>
       </>
     );
   }

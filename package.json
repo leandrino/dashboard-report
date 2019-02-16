@@ -14,6 +14,7 @@
     "graphql-compiler": "^1.7.0",
     "jest-dom": "^3.0.1",
     "lint-staged": "^8.1.1",
+    "moment": "^2.24.0",
     "prettier": "^1.16.3",
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
@@ -32,7 +33,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "tslint 'src/**/*.{ts,tsx}'",
-    "relay": "relay-compiler --watchman false --src ./src --schema data/schema.graphql --language typescript --artifactDirectory ./src/__generated__"
+    "relay": "relay-compiler --watchman false --src ./src --schema ./data/schema.graphql --language typescript --artifactDirectory ./src/__generated__"
   },
   "browserslist": [
     ">0.2%",

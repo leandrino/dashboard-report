@@ -1,11 +1,13 @@
 """Axis to Chart!!!"""
 type Axis {
+  id: ID
   x: String
   y: String
 }
 
 """Select a chart type and be happy"""
 type Chart {
+  id: ID
   name_project: String
   axisNameX: String
   axisNameY: String
@@ -13,6 +15,6 @@ type Chart {
 }
 
 type Query {
-  ChartQuery: Chart
+  chart: Chart
 }
 
