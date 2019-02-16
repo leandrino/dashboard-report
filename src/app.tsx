@@ -1,8 +1,12 @@
 import React, { Component } from "react";
+import { QueryRenderer } from "react-relay";
+const graphql = require("babel-plugin-relay/macro");
 import { Global, css } from "@emotion/core";
 import { VictoryBar, VictoryChart, VictoryAxis, VictoryTheme } from "victory";
 import { globalCSS } from "./app.style";
 import AppBar from "./shared/app-bar";
+
+const environment = require("./relay/environment");
 
 const data = [
   { quarter: 1, earnings: 13000 },
@@ -15,6 +19,30 @@ class App extends Component {
   public render() {
     return (
       <>
+        <QueryRenderer
+          environment={environment}
+          query={graphql`
+            query ChartQuery {
+              name_project
+              axisNameX
+              axisNameY
+              axis {
+                x
+                y
+              }
+            }
+          `}
+          variables={{}}
+          render={({ error, props }) => {
+            if (error) {
+              return <div>Error!</div>;
+            }
+            if (!error) {
+              return <div>Loading</div>;
+            }
+            return <div>{props}</div>;
+          }}
+        />
         <Global styles={globalCSS} />
         <AppBar>Any render</AppBar>
         <VictoryChart theme={VictoryTheme.material} domainPadding={20}>

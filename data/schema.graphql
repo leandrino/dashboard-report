@@ -1,0 +1,18 @@
+"""Axis to Chart!!!"""
+type Axis {
+  x: String
+  y: String
+}
+
+"""Select a chart type and be happy"""
+type Chart {
+  name_project: String
+  axisNameX: String
+  axisNameY: String
+  axis: [Axis]
+}
+
+type Query {
+  ChartQuery: Chart
+}
+
