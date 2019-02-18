@@ -1,6 +1,7 @@
 import { css } from "@emotion/core";
 
 export const globalCSS = css`
+  @import url("https://fonts.googleapis.com/css?family=Montserrat|Roboto");
   * {
     margin: 0;
     padding: 0;
@@ -14,7 +15,7 @@ export const globalCSS = css`
   }
 
   body {
-    background-color: #EEF1F5;
-    font-family: "sans-serif";
+    background-color: #eef1f5;
+    font-family: "Roboto", sans-serif;
   }
 `;

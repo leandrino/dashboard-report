@@ -9,6 +9,7 @@ type Axis {
 type Chart {
   id: ID
   name_project: String
+  chartName: String
   axisNameX: String
   axisNameY: String
   axis: [Axis]

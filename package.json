@@ -33,7 +33,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "tslint 'src/**/*.{ts,tsx}'",
-    "relay": "relay-compiler --watchman false --src ./src --schema ./data/schema.graphql --language typescript --artifactDirectory ./src/__generated__"
+    "relay": "relay-compiler --watchman false --src ./src --schema ./data/schema.graphql --language typescript"
   },
   "browserslist": [
     ">0.2%",
