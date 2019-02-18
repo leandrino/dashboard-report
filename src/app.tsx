@@ -1,16 +1,9 @@
 import React, { Component } from "react";
-import { Global, css } from "@emotion/core";
-import AppBar from "./shared/app-bar";
-import { globalCSS } from "./app.style";
+import Containers from "./containers";
 
 class App extends Component {
   public render() {
-    return (
-      <>
-        <Global styles={globalCSS} />
-        <AppBar title="Dashboard report" />
-      </>
-    );
+    return <Containers />;
   }
 }
 
