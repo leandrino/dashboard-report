@@ -8,7 +8,7 @@ type Axis {
 """Select a chart type and be happy"""
 type Chart {
   id: ID
-  name_project: String
+  nameProject: String
   chartName: String
   axisNameX: String
   axisNameY: String
@@ -16,6 +16,6 @@ type Chart {
 }
 
 type Query {
-  chart: Chart
+  chart(chartType: String!): Chart
 }
 
