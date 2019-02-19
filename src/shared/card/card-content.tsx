@@ -7,7 +7,7 @@ const CardContent = styled.h1`
   display: flex;
   justify-content: center;
   margin-top: 30px;
-  padding: 15px;
+  padding: 35px;
   position: relative;
   width: 100%;
 `;

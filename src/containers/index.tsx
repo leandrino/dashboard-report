@@ -18,11 +18,10 @@ const Containers = () => (
       <QueryRenderer
         environment={environment}
         query={graphql`
-          query containersChartQuery {
-            chart {
+          query containersChartCoverageQuery($chartType: String!) {
+            chart(chartType: $chartType) {
+              nameProject
               chartName
-              axisNameX
-              axisNameY
               axis {
                 x
                 y
@@ -30,7 +29,7 @@ const Containers = () => (
             }
           }
         `}
-        variables={{}}
+        variables={{ chartType: "coverage" }}
         render={({ error, props }) => {
           if (error) {
             return <div>Error!</div>;
@@ -66,11 +65,10 @@ const Containers = () => (
       <QueryRenderer
         environment={environment}
         query={graphql`
-          query containersChartsQuery {
-            chart {
+          query containersChartLineQuery($chartType: String!) {
+            chart(chartType: $chartType) {
+              nameProject
               chartName
-              axisNameX
-              axisNameY
               axis {
                 x
                 y
@@ -78,7 +76,7 @@ const Containers = () => (
             }
           }
         `}
-        variables={{}}
+        variables={{ chartType: "lines" }}
         render={({ error, props }) => {
           if (error) {
             return <div>Error!</div>;
@@ -89,7 +87,7 @@ const Containers = () => (
           const dataChart = props.chart.axis.map((item: any) => {
             return {
               x: item.x,
-              y: parseFloat(item.y)
+              y: parseInt(item.y, 10)
             };
           });
           return (
@@ -100,10 +98,14 @@ const Containers = () => (
                   width={600}
                   height={470}
                   theme={VictoryTheme.material}
+                  padding={{ left: 70, bottom: 50, top: 50, right: 30 }}
                   domainPadding={20}
                 >
                   <VictoryAxis tickFormat={x => x} />
-                  <VictoryAxis dependentAxis={true} tickFormat={y => y} />
+                  <VictoryAxis
+                    dependentAxis={true}
+                    tickFormat={y => `${Math.round(y)}k`}
+                  />
                   <VictoryLine data={dataChart} x="x" y="y" />
                 </VictoryChart>
               </CardContent>
