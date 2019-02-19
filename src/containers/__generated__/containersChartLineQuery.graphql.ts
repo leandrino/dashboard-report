@@ -1,31 +1,33 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-export type containersChartQueryVariables = {};
-export type containersChartQueryResponse = {
+export type containersChartLineQueryVariables = {
+    readonly chartType: string;
+};
+export type containersChartLineQueryResponse = {
     readonly chart: ({
+        readonly nameProject: string | null;
         readonly chartName: string | null;
-        readonly axisNameX: string | null;
-        readonly axisNameY: string | null;
         readonly axis: ReadonlyArray<({
             readonly x: string | null;
             readonly y: string | null;
         }) | null> | null;
     }) | null;
 };
-export type containersChartQuery = {
-    readonly response: containersChartQueryResponse;
-    readonly variables: containersChartQueryVariables;
+export type containersChartLineQuery = {
+    readonly response: containersChartLineQueryResponse;
+    readonly variables: containersChartLineQueryVariables;
 };
 
 
 
 /*
-query containersChartQuery {
-  chart {
+query containersChartLineQuery(
+  $chartType: String!
+) {
+  chart(chartType: $chartType) {
+    nameProject
     chartName
-    axisNameX
-    axisNameY
     axis {
       x
       y
@@ -37,42 +39,51 @@ query containersChartQuery {
 */
 
 const node: ConcreteRequest = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "chartName",
-  "args": null,
-  "storageKey": null
-},
-v1 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "axisNameX",
-  "args": null,
-  "storageKey": null
-},
+var v0 = [
+  {
+    "kind": "LocalArgument",
+    "name": "chartType",
+    "type": "String!",
+    "defaultValue": null
+  }
+],
+v1 = [
+  {
+    "kind": "Variable",
+    "name": "chartType",
+    "variableName": "chartType",
+    "type": "String!"
+  }
+],
 v2 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "axisNameY",
+  "name": "nameProject",
   "args": null,
   "storageKey": null
 },
 v3 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "x",
+  "name": "chartName",
   "args": null,
   "storageKey": null
 },
 v4 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "y",
+  "name": "x",
   "args": null,
   "storageKey": null
 },
 v5 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "y",
+  "args": null,
+  "storageKey": null
+},
+v6 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "id",
@@ -83,23 +94,22 @@ return {
   "kind": "Request",
   "fragment": {
     "kind": "Fragment",
-    "name": "containersChartQuery",
+    "name": "containersChartLineQuery",
     "type": "Query",
     "metadata": null,
-    "argumentDefinitions": [],
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "chart",
         "storageKey": null,
-        "args": null,
+        "args": (v1/*: any*/),
         "concreteType": "Chart",
         "plural": false,
         "selections": [
-          (v0/*: any*/),
-          (v1/*: any*/),
           (v2/*: any*/),
+          (v3/*: any*/),
           {
             "kind": "LinkedField",
             "alias": null,
@@ -109,8 +119,8 @@ return {
             "concreteType": "Axis",
             "plural": true,
             "selections": [
-              (v3/*: any*/),
-              (v4/*: any*/)
+              (v4/*: any*/),
+              (v5/*: any*/)
             ]
           }
         ]
@@ -119,21 +129,20 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "containersChartQuery",
-    "argumentDefinitions": [],
+    "name": "containersChartLineQuery",
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "chart",
         "storageKey": null,
-        "args": null,
+        "args": (v1/*: any*/),
         "concreteType": "Chart",
         "plural": false,
         "selections": [
-          (v0/*: any*/),
-          (v1/*: any*/),
           (v2/*: any*/),
+          (v3/*: any*/),
           {
             "kind": "LinkedField",
             "alias": null,
@@ -143,24 +152,24 @@ return {
             "concreteType": "Axis",
             "plural": true,
             "selections": [
-              (v3/*: any*/),
               (v4/*: any*/),
-              (v5/*: any*/)
+              (v5/*: any*/),
+              (v6/*: any*/)
             ]
           },
-          (v5/*: any*/)
+          (v6/*: any*/)
         ]
       }
     ]
   },
   "params": {
     "operationKind": "query",
-    "name": "containersChartQuery",
+    "name": "containersChartLineQuery",
     "id": null,
-    "text": "query containersChartQuery {\n  chart {\n    chartName\n    axisNameX\n    axisNameY\n    axis {\n      x\n      y\n      id\n    }\n    id\n  }\n}\n",
+    "text": "query containersChartLineQuery(\n  $chartType: String!\n) {\n  chart(chartType: $chartType) {\n    nameProject\n    chartName\n    axis {\n      x\n      y\n      id\n    }\n    id\n  }\n}\n",
     "metadata": {}
   }
 };
 })();
-(node as any).hash = 'ea9a1ebdd0d8d72ddb8bae05b022583c';
+(node as any).hash = '78c664f33891f55f5ed61760b7e0645a';
 export default node;
