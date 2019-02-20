@@ -22,7 +22,9 @@ WORKDIR /app
 
 COPY ./nginx.conf /etc/nginx/nginx.conf
 COPY --from=builder /usr/src/app/build /app
+COPY ./bootstrap.sh /app
+RUN chmod +x bootstrap.sh
 
 EXPOSE 80
 
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["./bootstrap.sh"]
