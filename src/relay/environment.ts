@@ -1,7 +1,8 @@
 import { Environment, Network, RecordSource, Store } from "relay-runtime";
+import { BASE_URL } from "../constants";
 
 function fetchQuery(operation: any, variables: any) {
-  return fetch("http://localhost:3000/graphql", {
+  return fetch(`${BASE_URL}/graphql`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json"

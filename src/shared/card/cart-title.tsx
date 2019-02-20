@@ -2,7 +2,7 @@ import * as React from "react";
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 
-const CardTitle = styled.h1`
+const CardTitle = styled.header`
   background-color: #3867d6;
   color: #f5f5f5;
   font-family: "Montserrat", sans-serif;

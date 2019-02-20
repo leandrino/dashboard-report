@@ -8,6 +8,7 @@ import Card from "../shared/card";
 import CardTitle from "../shared/card/cart-title";
 import CardContent from "../shared/card/card-content";
 import Grid from "../shared/grid";
+import Badge from "../shared/badges";
 /* tslint:disable */
 const graphql = require("babel-plugin-relay/macro");
 /* tslint:enable*/
@@ -45,7 +46,10 @@ const Containers = () => (
           });
           return (
             <Card>
-              <CardTitle>{props.chart.chartName}</CardTitle>
+              <CardTitle>
+                <h1>{props.chart.chartName}</h1>
+                <Badge color="#26de81">{props.chart.nameProject}</Badge>
+              </CardTitle>
               <CardContent>
                 <VictoryChart
                   width={600}
@@ -92,7 +96,10 @@ const Containers = () => (
           });
           return (
             <Card>
-              <CardTitle>{props.chart.chartName}</CardTitle>
+              <CardTitle>
+                <h1>{props.chart.chartName}</h1>
+                <Badge color="#26de81">{props.chart.nameProject}</Badge>
+              </CardTitle>
               <CardContent>
                 <VictoryChart
                   width={600}
