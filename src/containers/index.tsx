@@ -1,7 +1,13 @@
 import * as React from "react";
 import { QueryRenderer } from "react-relay";
 import { Global, css } from "@emotion/core";
-import { VictoryLine, VictoryChart, VictoryAxis, VictoryTheme } from "victory";
+import {
+  VictoryLabel,
+  VictoryLine,
+  VictoryChart,
+  VictoryAxis,
+  VictoryTheme
+} from "victory";
 import { globalCSS } from "../app.style";
 import environment from "../relay/environment";
 import Card from "../shared/card";
@@ -9,6 +15,7 @@ import CardTitle from "../shared/card/cart-title";
 import CardContent from "../shared/card/card-content";
 import Grid from "../shared/grid";
 import Badge from "../shared/badges";
+import Tick from "../shared/tick";
 /* tslint:disable */
 const graphql = require("babel-plugin-relay/macro");
 /* tslint:enable*/
@@ -57,7 +64,19 @@ const Containers = () => (
                   theme={VictoryTheme.material}
                   domainPadding={20}
                 >
-                  <VictoryAxis tickFormat={x => x} />
+                  <VictoryAxis
+                    tickFormat={x => x}
+                    style={{
+                      axisLabel: { fontSize: 16 },
+                      tickLabels: {
+                        fontSize: 9,
+                        padding: 1,
+                        angle: 45,
+                        verticalAnchor: "middle",
+                        textAnchor: "start"
+                      }
+                    }}
+                  />
                   <VictoryAxis dependentAxis={true} tickFormat={y => y} />
                   <VictoryLine data={dataChart} x="x" y="y" />
                 </VictoryChart>
@@ -108,7 +127,10 @@ const Containers = () => (
                   padding={{ left: 70, bottom: 50, top: 50, right: 30 }}
                   domainPadding={20}
                 >
-                  <VictoryAxis tickFormat={x => x} />
+                  <VictoryAxis
+                    tickFormat={x => x}
+                    tickLabelComponent={<VictoryLabel angle={45} />}
+                  />
                   <VictoryAxis
                     dependentAxis={true}
                     tickFormat={y => `${Math.round(y)}k`}
