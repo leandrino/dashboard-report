@@ -7,10 +7,13 @@ jobs:
       - checkout
       - run: 
           name: Install
-          command: npm install
+          command: yarn install --force 
+      - run:
+          name: Relay
+          command: yarn relay
       - run:
           name: Build
-          command: npm run build
+          command: yarn build
       - save_cache:
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
@@ -24,7 +27,7 @@ jobs:
           keys:
             - dependency-cache-{{ checksum "package.json" }}
             - dependency-cache-
-      - run: npm run lint
+      - run: yarn lint
   test:
     docker:
       - image: circleci/node:11.8.0
@@ -34,7 +37,8 @@ jobs:
           keys:
             - dependency-cache-{{ checksum "package.json" }}
             - dependency-cache-
-      - run: npm test
+      - run: yarn relay
+      - run: yarn test
 workflows:
   version: 2
   building:
