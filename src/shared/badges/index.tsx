@@ -12,7 +12,7 @@ const baseBadge = (props: any) => css`
 
 const fontBadge = css`
   font-family: roboto;
-  font-size: 0.75rem;
+  font-size: 1rem;
   font-weight: 600;
 `;
 
