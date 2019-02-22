@@ -78,7 +78,18 @@ const Containers = () => (
                     }}
                   />
                   <VictoryAxis dependentAxis={true} tickFormat={y => y} />
-                  <VictoryLine data={dataChart} x="x" y="y" />
+                  <VictoryLine
+                    data={dataChart}
+                    x="x"
+                    y="y"
+                    style={{
+                      data: {
+                        stroke: "#26de81",
+                        strokeWidth: 5,
+                        strokeLinecap: "round"
+                      }
+                    }}
+                  />
                 </VictoryChart>
               </CardContent>
             </Card>
@@ -129,13 +140,42 @@ const Containers = () => (
                 >
                   <VictoryAxis
                     tickFormat={x => x}
-                    tickLabelComponent={<VictoryLabel angle={45} />}
+                    style={{
+                      axisLabel: { fontSize: 16 },
+                      tickLabels: {
+                        fontSize: 9,
+                        padding: 1,
+                        angle: 45,
+                        verticalAnchor: "middle",
+                        textAnchor: "start"
+                      }
+                    }}
                   />
                   <VictoryAxis
                     dependentAxis={true}
                     tickFormat={y => `${Math.round(y)}k`}
                   />
-                  <VictoryLine data={dataChart} x="x" y="y" />
+                  <VictoryLine
+                    data={dataChart}
+                    x="x"
+                    y="y"
+                    // labels={(datum: any) => datum.x}
+                    // labelComponent={
+                    //   <VictoryLabel
+                    //     renderInPortal={true}
+                    //     dy={0}
+                    //     dx={-30}
+                    //     angle={90}
+                    //   />
+                    // }
+                    style={{
+                      data: {
+                        stroke: "#26de81",
+                        strokeWidth: 5,
+                        strokeLinecap: "round"
+                      }
+                    }}
+                  />
                 </VictoryChart>
               </CardContent>
             </Card>
