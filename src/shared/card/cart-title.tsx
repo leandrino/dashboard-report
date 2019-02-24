@@ -11,7 +11,7 @@ const CardTitle = styled.header`
   position: relative;
   text-transform: uppercase;
   width: 100%;
-  z-index: 100;
+  z-index: 99;
   &:before {
     background-color: #3867d6;
     content: "";
