@@ -25,7 +25,8 @@
     "tslint-config-prettier": "^1.17.0",
     "tslint-react": "^3.6.0",
     "typescript": "^3.3.1",
-    "victory": "^31.2.0"
+    "victory": "^31.2.0",
+    "snyk": "^1.189.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -33,7 +34,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "tslint 'src/**/*.{ts,tsx}'",
-    "relay": "relay-compiler --watchman false --src ./src --schema ./data/schema.graphql --language typescript"
+    "relay": "relay-compiler --watchman false --src ./src --schema ./data/schema.graphql --language typescript",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "browserslist": [
     ">0.2%",
@@ -47,5 +50,6 @@
     "graphql": "^14.1.1",
     "relay-compiler": "^2.0.0",
     "relay-compiler-language-typescript": "^2.0.0"
-  }
+  },
+  "snyk": true
 }
