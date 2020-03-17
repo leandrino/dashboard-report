@@ -19,7 +19,7 @@
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
     "react-relay": "^2.0.0",
-    "react-scripts": "^2.1.5",
+    "react-scripts": "^3.0.0",
     "react-testing-library": "^5.4.4",
     "tslint": "^5.12.1",
     "tslint-config-prettier": "^1.17.0",
