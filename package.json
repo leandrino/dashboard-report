@@ -19,14 +19,14 @@
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
     "react-relay": "^2.0.0",
-    "react-scripts": "^2.1.5",
+    "react-scripts": "^4.0.0",
     "react-testing-library": "^5.4.4",
     "tslint": "^5.12.1",
     "tslint-config-prettier": "^1.17.0",
     "tslint-react": "^3.6.0",
     "typescript": "^3.3.1",
     "victory": "^31.2.0",
-    "snyk": "^1.189.0"
+    "snyk": "^1.192.5"
   },
   "scripts": {
     "start": "react-scripts start",
